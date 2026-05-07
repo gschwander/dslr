@@ -215,10 +215,10 @@
             <mxPoint x="470" y="660" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ep6Vcv9k_6ox0c88zH7_-31" parent="MoVcxeQHBZMtHFU29h8S-1" style="rounded=1;whiteSpace=wrap;html=1;" value="Evaluation" vertex="1">
+        <mxCell id="ep6Vcv9k_6ox0c88zH7_-31" parent="MoVcxeQHBZMtHFU29h8S-1" style="rounded=1;whiteSpace=wrap;html=1;" value="Predict" vertex="1">
           <mxGeometry height="40" width="110" x="230" y="640" as="geometry" />
         </mxCell>
-        <mxCell id="ep6Vcv9k_6ox0c88zH7_-32" parent="MoVcxeQHBZMtHFU29h8S-1" style="rounded=1;whiteSpace=wrap;html=1;" value="Evaluation" vertex="1">
+        <mxCell id="ep6Vcv9k_6ox0c88zH7_-32" parent="MoVcxeQHBZMtHFU29h8S-1" style="rounded=1;whiteSpace=wrap;html=1;" value="houses.csv" vertex="1">
           <mxGeometry height="40" width="110" x="70" y="640" as="geometry" />
         </mxCell>
         <mxCell id="ep6Vcv9k_6ox0c88zH7_-33" edge="1" parent="MoVcxeQHBZMtHFU29h8S-1" source="ep6Vcv9k_6ox0c88zH7_-32" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ep6Vcv9k_6ox0c88zH7_-34" value="">
