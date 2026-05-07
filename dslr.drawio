@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="0tKCiW2H9U9yNMpW7Atb">
-    <mxGraphModel dx="1571" dy="881" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1834" dy="1304" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -79,6 +79,15 @@
             <mxPoint x="360" y="410" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="Y2pQFW4uB6nNZTh3tdt7-1" parent="MoVcxeQHBZMtHFU29h8S-1" style="rounded=1;whiteSpace=wrap;html=1;" value="{}Train/test split" vertex="1">
+          <mxGeometry height="40" width="110" x="150" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="Y2pQFW4uB6nNZTh3tdt7-2" parent="MoVcxeQHBZMtHFU29h8S-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="OK" vertex="1">
+          <mxGeometry height="30" width="60" x="530" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Y2pQFW4uB6nNZTh3tdt7-3" parent="MoVcxeQHBZMtHFU29h8S-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="NOK" vertex="1">
+          <mxGeometry height="30" width="60" x="335" y="160" as="geometry" />
+        </mxCell>
         <mxCell id="MoVcxeQHBZMtHFU29h8S-13" edge="1" parent="1" source="MoVcxeQHBZMtHFU29h8S-8" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <mxPoint x="390" y="710" as="sourcePoint" />
@@ -87,8 +96,11 @@
         </mxCell>
         <mxCell id="NjFdwsVWSedzDXnufngj-4" edge="1" parent="1" source="NjFdwsVWSedzDXnufngj-1" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="360" />
+            </Array>
             <mxPoint x="390" y="490" as="sourcePoint" />
-            <mxPoint x="600" y="370" as="targetPoint" />
+            <mxPoint x="340" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
