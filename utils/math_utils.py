@@ -1,53 +1,47 @@
-import math
-
-# ─── STATISTIQUES ───────────────────────────────────
+# utils/math_utils.py
 
 def count(values):
-    return len(values)
+    total = 0
+    for _ in values:
+        total += 1
+    return total
 
 def mean(values):
-    return sum(values) / len(values)
+    return sum(values) / count(values)
 
 def std(values):
     m = mean(values)
-    variance = sum((x - m) ** 2 for x in values) / len(values)
-    return math.sqrt(variance)
+    variance = 0
+    for x in values:
+        variance += (x - m) ** 2
+    variance /= count(values)
+    return variance ** 0.5
 
 def minimum(values):
     m = values[0]
-    for v in values:
-        if v < m:
-            m = v
+    for x in values:
+        if x < m:
+            m = x
     return m
 
 def maximum(values):
     m = values[0]
-    for v in values:
-        if v > m:
-            m = v
+    for x in values:
+        if x > m:
+            m = x
     return m
 
 def percentile(values, p):
-    """Calcule le percentile p (ex: 25, 50, 75)"""
     sorted_vals = sorted(values)
-    n = len(sorted_vals)
+    n = count(sorted_vals)
+    
     index = (p / 100) * (n - 1)
+    
     lower = int(index)
     upper = lower + 1
-    if upper >= n:
-        return sorted_vals[lower]
-    # Interpolation linéaire
     fraction = index - lower
+    
+    if upper >= n:
+        return sorted_vals[-1]
+    
     return sorted_vals[lower] + fraction * (sorted_vals[upper] - sorted_vals[lower])
-
-# ─── MACHINE LEARNING ───────────────────────────────
-
-# def sigmoid(z):
-#     return 1 / (1 + math.exp(-z))
-
-# def sigmoid_vector(z_list):
-#     return [sigmoid(z) for z in z_list]
-
-# def dot_product(theta, x):
-#     """θᵀx"""
-#     return sum(t * xi for t, xi in zip(theta, x))
