@@ -1,4 +1,4 @@
-# utils/math_utils.py (à ajouter)
+# utils/normalizer.py
 
 def normalize(X):
     """
