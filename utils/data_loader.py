@@ -50,3 +50,33 @@ def get_numeric_columns(headers, data):
                 numeric[col_name] = values
 
     return numeric
+
+def fill_missing_values(headers, data):
+    # Pour chaque colonne numérique
+    # on remplace les NaN par la moyenne de cette colonne
+    
+    for col_idx, header in enumerate(headers):
+        # Étape 1 : collecter toutes les valeurs valides de cette colonne
+        valid_vals = []
+        for row in data:
+            try:
+                val = float(row[col_idx])
+                valid_vals.append(val)
+            except:
+                pass  # on ignore les NaN et les strings
+        
+        # Étape 2 : si pas de valeur valide, on skip
+        if len(valid_vals) == 0:
+            continue
+        
+        # Étape 3 : calculer la moyenne
+        col_mean = sum(valid_vals) / len(valid_vals)
+        
+        # Étape 4 : remplacer les valeurs manquantes par la moyenne
+        for row in data:
+            try:
+                float(row[col_idx])
+            except:
+                row[col_idx] = str(col_mean)  # on remplace
+    
+    return data
