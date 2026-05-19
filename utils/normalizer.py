@@ -1,4 +1,5 @@
-# utils/math_utils.py (à ajouter)
+# utils/normalizer.py
+from utils.math_utils import mean, std
 
 def normalize(X):
     """
@@ -35,3 +36,15 @@ def normalize(X):
         X_norm.append(norm_row)
     
     return X_norm, means, stds
+
+def normalize_test(X_test, means, stds):
+    X_norm = []
+    for row in X_test:
+        norm_row = []
+        for j in range(len(means)):
+            if stds[j] == 0:
+                norm_row.append(0.0)
+            else:
+                norm_row.append((row[j] - means[j]) / stds[j])
+        X_norm.append(norm_row)
+    return X_norm
