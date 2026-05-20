@@ -126,7 +126,6 @@ def save_weights(weights: dict,
     Sauvegarde weights, means et stds dans un CSV.
     """
     rows = {"mean": means, "std": stds}
-    print(rows)
     for classe in classes:
         rows[classe] = weights[classe]
     
