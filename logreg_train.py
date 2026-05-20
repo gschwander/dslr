@@ -1,7 +1,10 @@
 import numpy as np
 import pandas as pd
+from utils.data_loader import load_csv, get_numeric_columns, fill_missing_values
+from utils.normalizer import normalize
+import sys
 
-def train_test_split(X: np.ndarray, Y:np.ndarray, test_size: float = 0.2, random_state: int = 42) -> tuple:
+def train_test_split(X: np.ndarray, Y: np.ndarray, test_size: float = 0.2, random_state: int = 42) -> tuple:
     """
     Args:
         X            : (n_samples, n_features)
@@ -114,17 +117,52 @@ def evaluate(y_pred: np.ndarray,
     """
     return np.mean(y_pred == y_test)
 
+def save_weights(weights: dict,
+                 classes: np.ndarray,
+                 means: np.ndarray,
+                 stds: np.ndarray,
+                 path: str = "weights.csv") -> None:
+    """
+    Sauvegarde weights, means et stds dans un CSV.
+    """
+    rows = {"mean": means, "std": stds}
+    print(rows)
+    for classe in classes:
+        rows[classe] = weights[classe]
+    
+    df = pd.DataFrame(rows).T
+    df.to_csv(path)
+
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python logreg_train.py dataset_train.csv")
+        return
+
+    df = pd.read_csv(sys.argv[1])
+
+    y = df["Hogwarts House"].values
+
+    X = df.select_dtypes(include=[np.number])
+    X = X.drop(columns=["Index"], errors="ignore")
+
+    X = X.fillna(X.mean())
+
+    means = X.mean()
+    stds = X.std()
+    X = (X - means) / stds
+    X = X.values
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y)
+    classes, weights = init_logreg_ovr(X_train, y_train)
+    weight = gradient_descent(X_train, y_train, weights, classes)
+    y_pred = predict(X_test, weight, classes)
+    print(f"Accurancy = {evaluate(y_pred, y_test)}")
+    save_weights(weights, classes, means, stds)
+    
+    # print(X)
 
 
 
-df      = pd.read_csv("datasets/dataset_train.csv")
-X       = df.select_dtypes(include=[np.number]).fillna(0).values
-y       = df["Hogwarts House"].values
-
-X_train, X_test, y_train, y_test = train_test_split(X, y)
-classes, weights                 = init_logreg_ovr(X_train, y_train)
-weights                          = gradient_descent(X_train, y_train, weights, classes)
-y_pred                           = predict(X_test, weights, classes)
-accuracy                         = evaluate(y_pred, y_test)
-
-print(f"Accuracy : {accuracy:.2%}")
+if __name__ == "__main__":
+    main()
